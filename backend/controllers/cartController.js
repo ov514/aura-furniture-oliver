@@ -51,3 +51,18 @@ export const removeFromCart = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const clearCart = async (req, res) => {
+    try {
+        let cart = await Cart.findOne({ user: req.user._id });
+        if (cart) {
+            cart.cartItems = [];
+            await cart.save();
+            res.json(cart);
+        } else {
+            res.status(404).json({ message: 'Cart not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

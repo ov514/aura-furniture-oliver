@@ -14,7 +14,8 @@ const Contact = () => {
     return (
         <motion.div 
             className="page-container"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -60 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                 <h1 className="text-gradient" style={{ fontSize: '3.5rem' }}>Get in Touch</h1>

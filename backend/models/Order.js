@@ -19,6 +19,11 @@ const orderSchema = mongoose.Schema(
             country: { type: String, required: true },
         },
         totalPrice: { type: Number, required: true, default: 0.0 },
+        paymentMethod: { type: String, required: true, default: 'Card' },
+        paymentResult: {
+            cardholderName: { type: String },
+            cardNumberMasked: { type: String },
+        },
         isPaid: { type: Boolean, required: true, default: false },
         status: { type: String, required: true, default: 'Pending' },
     },

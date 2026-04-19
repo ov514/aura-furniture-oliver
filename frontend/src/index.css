@@ -343,3 +343,41 @@ input:focus, textarea:focus {
     justify-content: center;
   }
 }
+
+/* Scroll Page Indicator Dots */
+.scroll-indicator {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 500;
+}
+
+.scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+  background: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
+  transform: scale(1.4);
+}
+
+.scroll-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    right: 12px;
+  }
+}

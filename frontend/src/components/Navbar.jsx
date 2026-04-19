@@ -33,6 +33,17 @@ const Navbar = () => {
             <Link to="/products" style={{ color: location.pathname === '/products' ? '#ba9ffb' : '' }}>Showroom</Link>
             <Link to="/about" style={{ color: location.pathname === '/about' ? '#ba9ffb' : '' }}>About Us</Link>
             <Link to="/contact" style={{ color: location.pathname === '/contact' ? '#ba9ffb' : '' }}>Contact</Link>
+            <Link to="/custom" style={{ 
+                color: location.pathname === '/custom' ? '#ba9ffb' : 'rgba(255,255,255,0.9)',
+                background: 'linear-gradient(135deg, rgba(186,159,251,0.15), rgba(138,99,229,0.1))',
+                border: '1px solid rgba(186,159,251,0.3)',
+                padding: '6px 14px',
+                borderRadius: '20px',
+                fontWeight: '600',
+                fontSize: '0.9rem'
+            }}>✦ Custom Order</Link>
+            
+            <Link to="/admin/orders" style={{ color: location.pathname === '/admin/orders' ? '#ba9ffb' : '', fontSize: '0.9rem' }}>Orders</Link>
             
             <Link to="/cart" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <ShoppingCart size={20} />
@@ -44,7 +55,11 @@ const Navbar = () => {
             {user ? (
                 <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row' }}>
                     <Link to="/profile" title="Dashboard"><User size={20} /></Link>
-                    {user.role === 'admin' && <Link to="/admin" title="Admin"><Package size={20} /></Link>}
+                    {user.role === 'admin' && (
+                        <Link to="/admin/orders" title="Admin Orders">
+                            <Package size={20} />
+                        </Link>
+                    )}
                     <a href="#" onClick={(e) => { e.preventDefault(); logout(); }} title="Logout">
                         <LogOut size={20} color="#ff6b6b" />
                     </a>

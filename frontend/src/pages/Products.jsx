@@ -57,7 +57,8 @@ const Products = () => {
     return (
         <motion.div 
             className="page-container"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -60 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                 <motion.h1 className="text-gradient" initial={{ y: -20 }} animate={{ y: 0 }}>The Collection</motion.h1>

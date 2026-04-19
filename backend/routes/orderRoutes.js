@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route('/')
     .post(protect, addOrderItems)
-    .get(protect, admin, getOrders);
+    .get(protect, getOrders);
 
 router.route('/user')
     .get(protect, getMyOrders);

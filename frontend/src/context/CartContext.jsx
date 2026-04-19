@@ -54,8 +54,17 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    const clearCart = async () => {
+        try {
+            const { data } = await API.delete('/cart/clear');
+            setCart(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
-        <CartContext.Provider value={{ cart, fetchCart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cart, fetchCart, addToCart, removeFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

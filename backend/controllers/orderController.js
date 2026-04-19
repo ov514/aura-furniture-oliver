@@ -11,7 +11,9 @@ export const addOrderItems = async (req, res) => {
                 orderItems,
                 user: req.user._id,
                 shippingAddress,
+                paymentResult: req.body.paymentResult,
                 totalPrice,
+                isPaid: true,
             });
 
             const createdOrder = await order.save();
