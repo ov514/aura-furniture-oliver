@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, MapPin, Phone, Mail } from 'lucide-react';
+import API from '../api';
 
 const Contact = () => {
     const [sent, setSent] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [form, setForm] = useState({ firstName: '', lastName: '', email: '', message: '' });
 
-    const handleSubmit = (e) => {
+    const update = (key, value) => setForm(prev => ({ ...prev, [key]: value }));
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSent(true);
-        setTimeout(() => setSent(false), 5000);
+        setLoading(true);
+        setError('');
+        try {
+            await API.post('/contact', form);
+            setSent(true);
+            setForm({ firstName: '', lastName: '', email: '', message: '' });
+            setTimeout(() => setSent(false), 5000);
+        } catch (err) {
+            setError('Failed to send message. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -60,11 +76,29 @@ const Contact = () => {
                 <motion.div className="glass-panel" initial={{ x: 50 }} animate={{ x: 0 }}>
                     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '25px' }}>
-                            <input type="text" placeholder="First Name" required />
-                            <input type="text" placeholder="Last Name" required />
+                            <input
+                                type="text" placeholder="First Name" required
+                                value={form.firstName} onChange={e => update('firstName', e.target.value)}
+                            />
+                            <input
+                                type="text" placeholder="Last Name" required
+                                value={form.lastName} onChange={e => update('lastName', e.target.value)}
+                            />
                         </div>
-                        <input type="email" placeholder="Email Address" required />
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <input
+                            type="email" placeholder="Email Address" required
+                            value={form.email} onChange={e => update('email', e.target.value)}
+                        />
+                        <textarea
+                            placeholder="Your Message" rows="5" required
+                            value={form.message} onChange={e => update('message', e.target.value)}
+                        />
+
+                        {error && (
+                            <div style={{ color: '#ff6b6b', background: 'rgba(255,107,107,0.1)', padding: '12px 16px', borderRadius: '10px', fontSize: '0.9rem' }}>
+                                {error}
+                            </div>
+                        )}
                         
                         <AnimatePresence mode="wait">
                             {sent ? (
@@ -72,11 +106,15 @@ const Contact = () => {
                                     initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                                     style={{ background: 'rgba(46, 213, 115, 0.2)', color: '#2ed573', padding: '16px', borderRadius: '15px', textAlign: 'center', fontWeight: 'bold' }}
                                 >
-                                    Message Sent Successfully!
+                                    ✅ Message Sent Successfully!
                                 </motion.div>
                             ) : (
-                                <motion.button type="submit" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-                                    <Send size={20} /> Send Message
+                                <motion.button
+                                    type="submit" className="btn-primary"
+                                    disabled={loading}
+                                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', opacity: loading ? 0.7 : 1 }}
+                                >
+                                    <Send size={20} /> {loading ? 'Sending...' : 'Send Message'}
                                 </motion.button>
                             )}
                         </AnimatePresence>

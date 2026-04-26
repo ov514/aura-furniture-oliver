@@ -7,6 +7,7 @@ const API = axios.create({
 API.interceptors.request.use((req) => {
     const userInfo = localStorage.getItem('userInfo');
     if (userInfo) {
+        // Fixed line: Wrapped in backticks ` `
         req.headers.Authorization = `Bearer ${JSON.parse(userInfo).token}`;
     }
     return req;

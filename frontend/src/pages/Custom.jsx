@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Ruler, Palette, Calendar, CheckCircle } from 'lucide-react';
+import API from '../api';
 
 const roomTypes = ['Living Room', 'Bedroom', 'Dining Room', 'Home Office', 'Kitchen', 'Outdoor', 'Other'];
 const styles = ['Modern Minimalist', 'Dark Luxury', 'Scandinavian', 'Industrial', 'Mid-Century Modern', 'Bohemian', 'Contemporary'];
@@ -8,6 +9,8 @@ const budgets = ['Under $500', '$500 – $1,000', '$1,000 – $3,000', '$3,000 �
 
 const Custom = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const [form, setForm] = useState({
         name: '', email: '', phone: '',
         room: '', style: '', budget: '',
@@ -16,9 +19,18 @@ const Custom = () => {
 
     const updateForm = (key, value) => setForm(prev => ({ ...prev, [key]: value }));
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        setLoading(true);
+        setError('');
+        try {
+            await API.post('/custom-orders', form);
+            setSubmitted(true);
+        } catch (err) {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -174,13 +186,20 @@ const Custom = () => {
                                 />
                             </div>
 
+                            {error && (
+                                <div style={{ color: '#ff6b6b', background: 'rgba(255,107,107,0.1)', padding: '12px 16px', borderRadius: '10px', marginBottom: '16px', fontSize: '0.9rem' }}>
+                                    {error}
+                                </div>
+                            )}
+
                             <motion.button
                                 type="submit" className="btn-primary"
-                                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', fontSize: '1.1rem', padding: '18px' }}
-                                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                                disabled={loading}
+                                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', fontSize: '1.1rem', padding: '18px', opacity: loading ? 0.7 : 1 }}
+                                whileHover={{ scale: loading ? 1 : 1.02 }} whileTap={{ scale: loading ? 1 : 0.98 }}
                             >
                                 <Sparkles size={20} />
-                                Submit Custom Request & Book Free Consultation
+                                {loading ? 'Submitting...' : 'Submit Custom Request & Book Free Consultation'}
                             </motion.button>
                         </form>
                     </motion.div>
