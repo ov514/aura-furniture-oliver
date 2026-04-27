@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AURA Furniture – Presentation</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#0a0a0f;color:#fff;overflow:hidden;height:100vh}
+.slide{display:none;height:100vh;padding:60px;position:relative;animation:fadeIn .5s ease}
+.slide.active{display:flex;flex-direction:column;justify-content:center}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.badge{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:16px}
+h1{font-size:56px;font-weight:700;line-height:1.1;margin-bottom:20px}
+h2{font-size:38px;font-weight:700;margin-bottom:24px}
+p{font-size:18px;color:#ccc;line-height:1.7;max-width:700px}
+.grad{background:linear-gradient(135deg,#a78bfa,#f9a8d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grid{display:grid;gap:20px;margin-top:30px}
+.grid2{grid-template-columns:1fr 1fr}
+.grid3{grid-template-columns:1fr 1fr 1fr}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px}
+.card h3{font-size:18px;margin-bottom:10px;color:#a78bfa}
+.card p{font-size:14px;color:#bbb}
+.card ul{font-size:14px;color:#bbb;padding-left:18px;line-height:2}
+code{background:rgba(167,139,250,0.15);color:#c4b5fd;padding:2px 8px;border-radius:6px;font-size:13px}
+pre{background:#111;border:1px solid #333;border-radius:12px;padding:20px;font-size:13px;color:#d1fae5;overflow-x:auto;margin-top:16px;line-height:1.8}
+.tag{display:inline-block;background:rgba(167,139,250,0.2);color:#c4b5fd;border:1px solid #a78bfa;border-radius:20px;padding:4px 14px;font-size:13px;margin:4px}
+.accent{color:#f9a8d4}
+.slide1-bg{background:radial-gradient(ellipse at 60% 50%,rgba(167,139,250,0.15) 0%,transparent 70%)}
+nav{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:100}
+nav button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:10px 24px;border-radius:30px;cursor:pointer;font-size:14px;transition:.2s}
+nav button:hover{background:rgba(167,139,250,0.3);border-color:#a78bfa}
+.counter{position:fixed;top:24px;right:36px;font-size:14px;color:#666;z-index:100}
+.num{font-size:80px;font-weight:800;color:rgba(167,139,250,0.15);position:absolute;top:40px;right:60px}
+.row{display:flex;gap:20px;margin-top:20px}
+.row .card{flex:1}
+.arch{display:flex;align-items:center;gap:0;margin-top:30px}
+.arch-box{background:rgba(167,139,250,0.1);border:1px solid #a78bfa;border-radius:12px;padding:16px 24px;text-align:center;font-size:14px;font-weight:600}
+.arch-arrow{font-size:24px;color:#a78bfa;padding:0 12px}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide slide1-bg active">
+  <div class="num">01</div>
+  <div class="badge">Final Project Presentation</div>
+  <h1><span class="grad">AURA Furniture</span><br/>Full-Stack Web Application</h1>
+  <p>A premium e-commerce platform for luxury furniture — built with React, Node.js, Express, and MongoDB.</p>
+  <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap">
+    <span class="tag">React 18</span><span class="tag">Node.js</span><span class="tag">Express</span>
+    <span class="tag">MongoDB</span><span class="tag">JWT Auth</span><span class="tag">Vercel</span>
+  </div>
+</div>
+
+<!-- Slide 2: Project Overview -->
+<div class="slide">
+  <div class="num">02</div>
+  <div class="badge">Overview</div>
+  <h2>What is <span class="grad">AURA Furniture</span>?</h2>
+  <p>A full-stack luxury furniture e-commerce website with user authentication, product browsing, shopping cart, checkout, custom orders, and an admin dashboard.</p>
+  <div class="grid grid3" style="margin-top:30px">
+    <div class="card">
+      <h3>🛒 Shopping</h3>
+      <p>Browse products, view details, add to cart, and checkout with card payment.</p>
+    </div>
+    <div class="card">
+      <h3>🎨 Custom Orders</h3>
+      <p>Submit custom furniture requests with room type, style, budget, and dimensions.</p>
+    </div>
+    <div class="card">
+      <h3>🔐 Admin Panel</h3>
+      <p>Admins can view all orders, customer details, and payment results.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Tech Stack -->
+<div class="slide">
+  <div class="num">03</div>
+  <div class="badge">Architecture</div>
+  <h2>System <span class="grad">Architecture</span></h2>
+  <div class="arch">
+    <div class="arch-box" style="min-width:150px">🖥️<br/>Frontend<br/><small style="color:#a78bfa">React + Vite</small></div>
+    <div class="arch-arrow">⟷</div>
+    <div class="arch-box" style="min-width:150px">⚙️<br/>Backend<br/><small style="color:#a78bfa">Node + Express</small></div>
+    <div class="arch-arrow">⟷</div>
+    <div class="arch-box" style="min-width:150px">🍃<br/>Database<br/><small style="color:#a78bfa">MongoDB Atlas</small></div>
+  </div>
+  <div class="row" style="margin-top:30px">
+    <div class="card">
+      <h3>Deployment</h3>
+      <p>Both Frontend and Backend deployed separately on <strong style="color:#fff">Vercel</strong>. MongoDB hosted on <strong style="color:#fff">MongoDB Atlas</strong> cloud.</p>
+    </div>
+    <div class="card">
+      <h3>Communication</h3>
+      <p>Frontend sends HTTP requests via <strong style="color:#fff">Axios</strong>. Backend responds with JSON through a REST API.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Frontend -->
+<div class="slide">
+  <div class="num">04</div>
+  <div class="badge">Frontend</div>
+  <h2>Frontend — <span class="grad">React + Vite</span></h2>
+  <div class="grid grid2">
+    <div class="card">
+      <h3>📦 Technologies Used</h3>
+      <ul>
+        <li><code>React 18</code> — UI library</li>
+        <li><code>Vite</code> — Fast build tool</li>
+        <li><code>React Router DOM</code> — Page routing</li>
+        <li><code>Framer Motion</code> — Animations</li>
+        <li><code>Axios</code> — HTTP requests</li>
+        <li><code>Context API</code> — State management</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📄 Pages Built</h3>
+      <ul>
+        <li>Home, About, Contact</li>
+        <li>Products, Product Detail</li>
+        <li>Cart, Checkout (Payment)</li>
+        <li>Login, Register</li>
+        <li>Custom Order Form</li>
+        <li>Admin Orders Dashboard</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: React Router & Context -->
+<div class="slide">
+  <div class="num">05</div>
+  <div class="badge">Frontend — Routing & State</div>
+  <h2>React Router &amp; <span class="grad">Context API</span></h2>
+  <p>We use <code>React Router DOM</code> for navigation and <code>Context API</code> to share state (Auth + Cart) across all pages.</p>
+  <pre>// App.jsx — Routing Setup
+&lt;AuthProvider&gt;
+  &lt;CartProvider&gt;
+    &lt;Router&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/"         element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/products" element={&lt;Products /&gt;} /&gt;
+        &lt;Route path="/cart"     element={&lt;Cart /&gt;} /&gt;
+        &lt;Route path="/custom"   element={&lt;Custom /&gt;} /&gt;
+        &lt;Route path="/admin/orders" element={&lt;AdminOrders /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/Router&gt;
+  &lt;/CartProvider&gt;
+&lt;/AuthProvider&gt;</pre>
+</div>
+
+<!-- Slide 6: CartContext -->
+<div class="slide">
+  <div class="num">06</div>
+  <div class="badge">Frontend — State Management</div>
+  <h2>Cart <span class="grad">Context</span></h2>
+  <p>The <code>CartContext</code> manages cart state globally. Any page can add, remove, or clear cart items through API calls.</p>
+  <pre>// CartContext.jsx
+const addToCart = async (product, qty = 1) => {
+  if (!user) { alert('Please login'); return; }
+
+  const { data } = await API.post('/cart/add', {
+    productId: product._id,
+    name:      product.name,
+    qty,
+    price:     product.price,
+    image:     product.images?.[0] || '',
+  });
+  setCart(data);   // update global state
+};</pre>
+</div>
+
+<!-- Slide 7: Framer Motion -->
+<div class="slide">
+  <div class="num">07</div>
+  <div class="badge">Frontend — Animations</div>
+  <h2>Framer <span class="grad">Motion</span></h2>
+  <p>We use <code>Framer Motion</code> with <code>AnimatePresence</code> to create smooth page transitions and animated UI elements throughout the site.</p>
+  <div class="row">
+    <div class="card">
+      <h3>Page Transitions</h3>
+      <p><code>AnimatePresence mode="wait"</code> wraps the Routes — when you navigate, the old page fades out and the new page fades in smoothly.</p>
+    </div>
+    <div class="card">
+      <h3>Component Animations</h3>
+      <p>Product cards, hero sections, and buttons all use <code>motion.div</code> with <code>initial</code>, <code>animate</code>, and <code>exit</code> props for micro-animations.</p>
+    </div>
+  </div>
+  <pre style="margin-top:20px">// Animated page transition
+&lt;AnimatePresence mode="wait"&gt;
+  &lt;Routes location={location} key={location.pathname}&gt;
+    ...
+  &lt;/Routes&gt;
+&lt;/AnimatePresence&gt;</pre>
+</div>
+
+<!-- Slide 8: Backend -->
+<div class="slide">
+  <div class="num">08</div>
+  <div class="badge">Backend</div>
+  <h2>Backend — <span class="grad">Node.js + Express</span></h2>
+  <div class="grid grid2">
+    <div class="card">
+      <h3>📦 Technologies Used</h3>
+      <ul>
+        <li><code>Express.js</code> — Web framework</li>
+        <li><code>Mongoose</code> — MongoDB ODM</li>
+        <li><code>bcryptjs</code> — Password hashing</li>
+        <li><code>jsonwebtoken</code> — JWT tokens</li>
+        <li><code>cors</code> — Cross-origin requests</li>
+        <li><code>dotenv</code> — Environment variables</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🛣️ API Routes</h3>
+      <ul>
+        <li><code>/api/auth</code> — Login / Register</li>
+        <li><code>/api/products</code> — Product data</li>
+        <li><code>/api/cart</code> — Cart management</li>
+        <li><code>/api/orders</code> — Place &amp; view orders</li>
+        <li><code>/api/custom-orders</code> — Custom requests</li>
+        <li><code>/api/contact</code> — Contact messages</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: JWT Auth -->
+<div class="slide">
+  <div class="num">09</div>
+  <div class="badge">Backend — Security</div>
+  <h2>JWT <span class="grad">Authentication</span></h2>
+  <p>We protect routes using <code>JSON Web Tokens</code>. The <code>protect</code> middleware verifies the token on every request. The <code>admin</code> middleware checks user role.</p>
+  <pre>// authMiddleware.js
+export const protect = async (req, res, next) => {
+  let token = req.headers.authorization?.split(' ')[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  req.user = await User.findById(decoded.id).select('-password');
+  next();
+};
+
+export const admin = (req, res, next) => {
+  if (req.user?.role === 'admin') next();
+  else res.status(401).json({ message: 'Not authorized as admin' });
+};</pre>
+</div>
+
+<!-- Slide 10: Order Controller -->
+<div class="slide">
+  <div class="num">10</div>
+  <div class="badge">Backend — Controllers</div>
+  <h2>Order <span class="grad">Controller</span></h2>
+  <p>Controllers handle the business logic. Here the <code>orderController</code> creates orders and links them to the authenticated user.</p>
+  <pre>// orderController.js
+export const addOrderItems = async (req, res) => {
+  const { orderItems, shippingAddress, totalPrice } = req.body;
+
+  const order = new Order({
+    orderItems,
+    user:          req.user._id,   // from JWT middleware
+    shippingAddress,
+    paymentResult: req.body.paymentResult,
+    totalPrice,
+    isPaid:        true,
+  });
+
+  const createdOrder = await order.save();
+  res.status(201).json(createdOrder);
+};</pre>
+</div>
+
+<!-- Slide 11: MongoDB -->
+<div class="slide">
+  <div class="num">11</div>
+  <div class="badge">Database</div>
+  <h2>Why <span class="grad">MongoDB</span>?</h2>
+  <div class="grid grid3">
+    <div class="card">
+      <h3>📄 Flexible Schema</h3>
+      <p>Furniture products have different fields (colors, materials, sizes). MongoDB stores them as flexible JSON documents — no rigid table structure needed.</p>
+    </div>
+    <div class="card">
+      <h3>⚡ Fast Development</h3>
+      <p>With <strong style="color:#fff">Mongoose</strong>, we define schemas in JavaScript. No SQL queries — just JavaScript objects. Perfect for a JS full-stack app.</p>
+    </div>
+    <div class="card">
+      <h3>☁️ Atlas Cloud</h3>
+      <p>MongoDB Atlas provides a free cloud-hosted database. No server setup needed — our backend connects with one connection string in <code>.env</code>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 12: Mongoose Models -->
+<div class="slide">
+  <div class="num">12</div>
+  <div class="badge">Database — Models</div>
+  <h2>Mongoose <span class="grad">Schemas</span></h2>
+  <p>We have <strong style="color:#fff">6 MongoDB collections</strong>, each defined as a Mongoose schema:</p>
+  <div class="grid grid3" style="margin-top:20px">
+    <div class="card">
+      <h3>👤 User</h3>
+      <p>name, email, password (hashed), role (user/admin)</p>
+    </div>
+    <div class="card">
+      <h3>🪑 Product</h3>
+      <p>name, price, description, category, images[], color[], material[], stock</p>
+    </div>
+    <div class="card">
+      <h3>🛒 Cart</h3>
+      <p>user (ref), items[ productId, name, qty, price, image ]</p>
+    </div>
+    <div class="card">
+      <h3>📦 Order</h3>
+      <p>user, orderItems[], shippingAddress, totalPrice, paymentResult, isPaid, status</p>
+    </div>
+    <div class="card">
+      <h3>🎨 CustomOrder</h3>
+      <p>name, email, phone, room, style, budget, dimensions, description</p>
+    </div>
+    <div class="card">
+      <h3>✉️ ContactMessage</h3>
+      <p>name, email, subject, message, timestamps</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 13: CustomOrder Schema -->
+<div class="slide">
+  <div class="num">13</div>
+  <div class="badge">Database — Example Schema</div>
+  <h2>Custom Order <span class="grad">Schema</span></h2>
+  <p>A great example of MongoDB flexibility — this schema stores a customer's custom furniture consultation request.</p>
+  <pre>// models/CustomOrder.js
+const customOrderSchema = new mongoose.Schema({
+  name:        { type: String, required: true },
+  email:       { type: String, required: true },
+  phone:       { type: String },
+  room:        { type: String, required: true },  // e.g. Living Room
+  style:       { type: String, required: true },  // e.g. Modern
+  budget:      { type: String, required: true },  // e.g. $1000 - $3000
+  dimensions:  { type: String },
+  date:        { type: String },
+  description: { type: String, required: true },
+}, { timestamps: true });  // adds createdAt &amp; updatedAt automatically</pre>
+</div>
+
+<!-- Slide 14: Data Flow -->
+<div class="slide">
+  <div class="num">14</div>
+  <div class="badge">How It All Works Together</div>
+  <h2>Full <span class="grad">Data Flow</span></h2>
+  <p>Example: A user adds a product to cart and places an order.</p>
+  <div style="margin-top:30px;display:flex;flex-direction:column;gap:14px">
+    <div class="card" style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:28px">1️⃣</span>
+      <div><strong>Login</strong> → POST <code>/api/auth/login</code> → Server verifies password with <code>bcryptjs</code>, returns <code>JWT token</code></div>
+    </div>
+    <div class="card" style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:28px">2️⃣</span>
+      <div><strong>Add to Cart</strong> → POST <code>/api/cart/add</code> with JWT header → <code>protect</code> middleware verifies → cart saved in MongoDB</div>
+    </div>
+    <div class="card" style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:28px">3️⃣</span>
+      <div><strong>Checkout</strong> → POST <code>/api/orders</code> → Order saved in MongoDB with payment info and user reference</div>
+    </div>
+    <div class="card" style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:28px">4️⃣</span>
+      <div><strong>Admin View</strong> → GET <code>/api/orders</code> with <code>admin</code> middleware → All orders retrieved and shown in dashboard</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 15: Thank You -->
+<div class="slide slide1-bg">
+  <div class="num">15</div>
+  <div class="badge">Thank You</div>
+  <h1><span class="grad">AURA Furniture</span></h1>
+  <p style="font-size:22px;margin-top:16px">A complete full-stack luxury furniture platform.</p>
+  <div style="margin-top:40px;display:flex;flex-direction:column;gap:10px">
+    <p>🖥️ <strong style="color:#fff">Frontend:</strong> React 18 · Vite · React Router · Framer Motion · Context API · Axios</p>
+    <p>⚙️ <strong style="color:#fff">Backend:</strong> Node.js · Express · JWT · bcryptjs · REST API · Vercel</p>
+    <p>🍃 <strong style="color:#fff">Database:</strong> MongoDB Atlas · Mongoose · 6 Collections · Flexible Schemas</p>
+  </div>
+  <p style="margin-top:40px;font-size:24px;color:#a78bfa;font-weight:700">Thank you! Any questions? 🙏</p>
+</div>
+
+<div class="counter" id="counter">1 / 15</div>
+
+<nav>
+  <button onclick="prev()">← Prev</button>
+  <button onclick="next()">Next →</button>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let cur = 0;
+function show(n){
+  slides[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  document.getElementById('counter').textContent = (cur+1)+' / '+slides.length;
+}
+function next(){show(cur+1)}
+function prev(){show(cur-1)}
+document.addEventListener('keydown', e => {
+  if(e.key==='ArrowRight'||e.key===' ')next();
+  if(e.key==='ArrowLeft')prev();
+});
+</script>
+</body>
+</html>
